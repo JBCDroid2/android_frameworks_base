@@ -62,5 +62,9 @@
     <!-- Floating action button -->
     <color name="fab_color">?android:attr/colorAccent</color>
     <color name="floating_action_button_icon_color">@android:color/white</color>
- 
+
+    <!-- QuickSettings text colors --> 
+    <color name="qs_alarm_status_text_color">#64ffffff</color>
+    <color name="qs_edit_toolbar_text_color">#FFFFFF</color>
+    <color name="qs_edit_button_text_color">#64FFFFFF</color> 
 </resources>

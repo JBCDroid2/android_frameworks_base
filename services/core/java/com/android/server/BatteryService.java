@@ -1167,7 +1167,7 @@ public final class BatteryService extends SystemService {
             mBatteryReallyFullARGB = Settings.System.getInt(resolver,
                     Settings.System.BATTERY_LIGHT_REALLY_FULL_COLOR, res.getInteger(
                     com.android.internal.R.integer.config_notificationsBatteryReallyFullARGB));
-					
+
             // Notification LED brightness
             if (mAdjustableNotificationLedBrightness) {
                 mNotificationLedBrightnessLevel = CMSettings.System.getInt(resolver,

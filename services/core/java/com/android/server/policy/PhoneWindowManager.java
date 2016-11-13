@@ -1320,7 +1320,8 @@ public class PhoneWindowManager implements WindowManagerPolicy {
         boolean panic = mImmersiveModeConfirmation.onPowerKeyDown(interactive,
                 SystemClock.elapsedRealtime(), isImmersiveMode(mLastSystemUiFlags),
                 isNavBarEmpty(mLastSystemUiFlags));
-        if (panic) {
+
+        if (panic && !WindowManagerPolicyControl.isImmersiveFiltersActive()) {
             mHandler.post(mHiddenNavPanic);
         }
 
@@ -8604,7 +8605,7 @@ public class PhoneWindowManager implements WindowManagerPolicy {
                 // If the top fullscreen-or-dimming window is also the top fullscreen, respect
                 // its light flag.
                 vis &= ~View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
-                vis |= PolicyControl.getSystemUiVisibility(statusColorWin, null)
+                vis |= WindowManagerPolicyControl.getSystemUiVisibility(statusColorWin, null)
                         & View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR;
             } else if (statusColorWin != null && statusColorWin.isDimming()) {
                 // Otherwise if it's dimming, clear the light flag.

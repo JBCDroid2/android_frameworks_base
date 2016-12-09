@@ -16,7 +16,6 @@
 
 package com.android.internal.os;
 
-
 import android.os.Build;
 import android.os.Trace;
 import dalvik.system.ZygoteHooks;
@@ -58,14 +57,14 @@ public final class Zygote {
     /** Read-write external storage should be mounted. */
     public static final int MOUNT_EXTERNAL_WRITE = 3;
 
-	private static final String[] PIXEL_SERVICES = {
+    private static final String[] PIXEL_SERVICES = {
         "com.google.process.gapps",
         "com.google.android.apps.nexuslauncher",
         "com.google.android.googlequicksearchbox",
         "com.google.android.gms",
         "com.google.android.apps.photos"
     };
-	
+
     private static final ZygoteHooks VM_HOOKS = new ZygoteHooks();
 
     private Zygote() {}

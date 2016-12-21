@@ -83,8 +83,15 @@
     <string name="accessibility_quick_settings_heads_up_changed_on">Heads up turned on.</string>
     <string name="quick_settings_pie_label">Pie</string>
     <string name="quick_settings_ambient_display_label">Ambient display</string>
-    <string name="accessibility_quick_settings_ambient_display_off">Ambient display off.</string>
-    <string name="accessibility_quick_settings_ambient_display_on">Ambient display on.</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_off">Ambient display turned off.</string>
-    <string name="accessibility_quick_settings_ambient_display_changed_on">Ambient display turned on.</string>
+    <string name="live_display_title" translatable="false">LiveDisplay</string>
+    <string name="accessibility_quick_settings_live_display_off">LiveDisplay off.</string>
+    <string name="accessibility_quick_settings_live_display_auto">LiveDisplay: auto mode.</string>
+    <string name="accessibility_quick_settings_live_display_day">LiveDisplay: day mode.</string>
+    <string name="accessibility_quick_settings_live_display_night">LiveDisplay: night mode.</string>
+    <string name="accessibility_quick_settings_live_display_outdoor">LiveDisplay: outdoor mode.</string>
+    <string name="accessibility_quick_settings_live_display_changed_off">LiveDisplay turned off.</string>
+    <string name="accessibility_quick_settings_live_display_changed_auto">LiveDisplay changed to auto mode.</string>
+    <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay changed to day mode.</string>
+    <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay changed to night mode.</string>
+    <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay changed to outdoor mode.</string>
 </resources>

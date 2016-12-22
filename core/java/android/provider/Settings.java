@@ -4033,6 +4033,21 @@ public final class Settings {
         public static final String STATUS_BAR_VIPER_LOGO_STYLE = "status_bar_viper_logo_style";
 
         /**
+         * @hide
+         */
+        public static final String STATUSBAR_BATTERY_BAR_ENABLE_CHARGING_COLOR = "battery_bar_enable_charging_color";
+
+        /**
+         * @hide
+         */
+        public static final String STATUSBAR_BATTERY_BAR_BLEND_COLORS = "battery_bar_blend_color";
+
+        /**
+         * @hide
+         */
+        public static final String STATUSBAR_BATTERY_BAR_BLEND_COLORS_REVERSE = "battery_bar_blend_color_reverse";
+
+        /**
          * Wether to show the ticker on the status bar
          * @hide
          */

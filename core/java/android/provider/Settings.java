@@ -3686,13 +3686,34 @@ public final class Settings {
          */
 
         /**
-          * Volume keys control cursor in text fields (default is 0)
-          * 0 - Disabled
-          * 1 - Volume up/down moves cursor left/right
-          * 2 - Volume up/down moves cursor right/left
-          * @hide
-          */
-         public static final String VOLUME_KEY_CURSOR_CONTROL = "volume_key_cursor_control";
+        /**
+         * Whether user can swap the order of the Alert Slider.
+         * * Whether user can invert the order of the Alert Slider.
+         * 0: Default
+         * 1: Inverted
+         * @hide
+         */
+        public static final String ALERT_SLIDER_ORDER = "alert_slider_order";
+
+        /**
+         * Preferred silent mode for Alert Slider..
+         * 0: Alarms only.
+         * 1: Total silence
+         * @hide
+         */
+        public static final String ALERT_SLIDER_SILENT_MODE = "alert_slider_silent_mode";
+
+        /** @hide */
+        public static final Validator KEY_VALIDATOR = new Validator() {
+            @Override
+            public boolean validate(String value) {
+                try {
+                    return Long.parseLong(value) >= 0;
+                } catch (NumberFormatException e) {
+                    return false;
+                }
+            }
+        };
 
         /**
          * Settings to backup. This is here so that it's in the same place as the settings

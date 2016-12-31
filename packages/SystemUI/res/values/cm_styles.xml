@@ -44,5 +44,9 @@
     <style name="BatteryMeterViewDrawable.Circle">
         <item name="blendMode">overlay</item>
     </style>
+    <style name="BatteryMeterViewDrawable.Gauge">
+        <item name="blendMode">overlay</item>
+        <item name="android:gravity">bottom|center_horizontal</item>
+    </style>
     <style name="BatteryMeterViewDrawable.Solid"/>
 </resources>

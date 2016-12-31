@@ -69,10 +69,11 @@ public class BatteryMeterDrawable extends Drawable implements
     // Values for the different battery styles
     public static final int BATTERY_STYLE_PORTRAIT  = 0;
     public static final int BATTERY_STYLE_SOLID     = 2;
-    public static final int BATTERY_STYLE_CIRCLE    = 4;
-    public static final int BATTERY_STYLE_HIDDEN    = 5;
-    public static final int BATTERY_STYLE_LANDSCAPE = 6;
-    public static final int BATTERY_STYLE_TEXT      = 7;
+    public static final int BATTERY_STYLE_GAUGE     = 4;
+    public static final int BATTERY_STYLE_CIRCLE    = 5;
+    public static final int BATTERY_STYLE_HIDDEN    = 6;
+    public static final int BATTERY_STYLE_LANDSCAPE = 7;
+    public static final int BATTERY_STYLE_TEXT      = 8;
 
     private final int[] mColors;
     private final int mIntrinsicWidth;
@@ -493,6 +494,8 @@ public class BatteryMeterDrawable extends Drawable implements
                 return R.drawable.ic_battery_circle;
 	    case BATTERY_STYLE_SOLID:
                 return R.drawable.ic_battery_solid;
+	    case BATTERY_STYLE_GAUGE:
+                return R.drawable.ic_battery_gauge;
             case BATTERY_STYLE_PORTRAIT:
                 return R.drawable.ic_battery_portrait;
             default:
@@ -508,6 +511,8 @@ public class BatteryMeterDrawable extends Drawable implements
                 return R.style.BatteryMeterViewDrawable_Circle;
 	    case BATTERY_STYLE_SOLID:
                 return R.style.BatteryMeterViewDrawable_Solid;
+	    case BATTERY_STYLE_GAUGE:
+                return R.style.BatteryMeterViewDrawable_Gauge;
             case BATTERY_STYLE_PORTRAIT:
                 return R.style.BatteryMeterViewDrawable_Portrait;
             default:

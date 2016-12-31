@@ -63,6 +63,9 @@ interface IStatusBarService
     void onNotificationExpansionChanged(in String key, in boolean userAction, in boolean expanded);
     void setSystemUiVisibility(int vis, int mask, String cause);
 
+    // SystemUI Restart API for masquerade
+    void restartUI();
+
     // Start DU methods
     void toggleRecentApps();
     void toggleSplitScreen();

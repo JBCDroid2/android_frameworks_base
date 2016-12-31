@@ -1072,6 +1072,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         initSignalCluster(mKeyguardStatusBar);
         initEmergencyCryptkeeperText();
 
+        mCustomCarrierLabel = (TextView) mStatusBarWindow.findViewById(R.id.statusbar_carrier_text);
+        if (mCustomCarrierLabel != null) {
+            updateCarrier();
+        }
+
         mFlashlightController = new FlashlightController(mContext);
         mKeyguardBottomArea.setFlashlightController(mFlashlightController);
         mKeyguardBottomArea.setPhoneStatusBar(this);

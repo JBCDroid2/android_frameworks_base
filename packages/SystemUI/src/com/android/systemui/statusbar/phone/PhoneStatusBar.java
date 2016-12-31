@@ -387,6 +387,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     View mExpandedContents;
     TextView mNotificationPanelDebugText;
 
+    // Custom Carrier Label
+    private int mShowCarrierLabel;
+    private TextView mCustomCarrierLabel;
+
     // settings
     private QSPanel mQSPanel;
 
@@ -519,6 +523,39 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
         mNavigationBarView.setDisabledFlags(mDisabled1);
         addNavigationBar();
+    }
+
+    private SettingsObserver mSettingsObserver;
+
+    protected class SettingsObserver extends ContentObserver {
+        SettingsObserver(Handler handler) {
+            super(handler);
+        }
+
+        void observe() {
+           ContentResolver resolver = mContext.getContentResolver();
+           resolver.registerContentObserver(Settings.System.getUriFor(
+                   Settings.System.STATUS_BAR_SHOW_CARRIER),
+                   false, this, UserHandle.USER_ALL);
+           updateSettings();
+        }
+
+        @Override
+        public void onChange(boolean selfChange, Uri uri) {
+            super.onChange(selfChange, uri);
+            if (uri.equals(Settings.System.getUriFor(
+                    Settings.System.STATUS_BAR_SHOW_CARRIER))) {
+                    updateSettings();
+                    updateCarrier();
+            }
+            updateSettings();
+        }
+
+        public void updateSettings() {
+            ContentResolver resolver = mContext.getContentResolver();
+            mShowCarrierLabel = Settings.System.getIntForUser(resolver,
+                    Settings.System.STATUS_BAR_SHOW_CARRIER, 1, UserHandle.USER_CURRENT);
+        }
     }
 
     // ensure quick settings is disabled until the current user makes it through the setup wizard
@@ -798,6 +835,11 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         // in session state
 
         addNavigationBar();
+
+        if (mSettingsObserver == null) {
+            mSettingsObserver = new SettingsObserver(new Handler());
+        }
+        mSettingsObserver.observe();
 
         // Developer options - Force Navigation bar
         try {
@@ -2144,6 +2186,18 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
 
     public void requestNotificationUpdate() {
         updateNotifications();
+    }
+
+    private void updateCarrier() {
+        if (mCustomCarrierLabel != null) {
+            if (mShowCarrierLabel == 2) {
+                mCustomCarrierLabel.setVisibility(View.VISIBLE);
+            } else if (mShowCarrierLabel == 3) {
+                mCustomCarrierLabel.setVisibility(View.VISIBLE);
+            } else {
+                mCustomCarrierLabel.setVisibility(View.GONE);
+            }
+        }
     }
 
     @Override
@@ -4644,6 +4698,7 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         updateStackScrollerState(goingToFullShade, fromShadeLocked);
         updateNotifications();
         checkBarModes();
+        updateCarrier();
         updateMediaMetaData(false, mState != StatusBarState.KEYGUARD);
         mKeyguardMonitor.notifyKeyguardState(mStatusBarKeyguardViewManager.isShowing(),
                 mStatusBarKeyguardViewManager.isSecure(),

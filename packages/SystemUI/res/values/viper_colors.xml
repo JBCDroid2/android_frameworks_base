@@ -38,7 +38,7 @@
     <color name="navbutton_ripple_color">#FFFFFFFF</color>
 
     <!-- QS edit page background color -->
-    <color name="qs_edit_item_decoration_bg">#ff384248</color>
+    <color name="qs_edit_item_decoration_bg">#ff3e414a</color>
 
     <!-- Nav bar tuner colors -->
     <color name="navbar_tuner_background_color">@android:color/white</color>

@@ -3381,6 +3381,12 @@ public final class Settings {
         public static final Validator VIBRATE_WHEN_RINGING_VALIDATOR = sBooleanValidator;
 
         /**
+         * Whether to enable the pixel navbar animation
+         * @hide
+         */
+        public static final String PIXEL_NAV_ANIMATION = "pixel_nav_animation";
+
+        /**
          * Whether the audible DTMF tones are played by the dialer when dialing. The value is
          * boolean (1 or 0).
          */

@@ -33,7 +33,6 @@
     <color name="icon_color_home">@android:color/white</color>
     <color name="icon_color_overview">@android:color/white</color>
 
-
     <!-- Navigation button ripple color -->
     <color name="navbutton_ripple_color">#FFFFFFFF</color>
 
@@ -44,4 +43,8 @@
     <color name="navbar_tuner_background_color">@android:color/white</color>
     <color name="navbar_tuner_text_color">@*android:color/material_deep_teal_500</color>
 
+    <!-- Floating action button -->
+    <color name="fab_color">?android:attr/colorAccent</color>
+    <color name="floating_action_button_icon_color">@android:color/white</color>
+ 
 </resources>

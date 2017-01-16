@@ -325,6 +325,12 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             Settings.Secure.QS_ROWS_LANDSCAPE;
     private static final String QS_COLUMNS =
             Settings.Secure.QS_COLUMNS;
+	private static final String STATUS_BAR_VIPER_LOGO =
+            "system:" + Settings.System.STATUS_BAR_VIPER_LOGO;
+    private static final String STATUS_BAR_VIPER_LOGO_COLOR =
+            "system:" + Settings.System.STATUS_BAR_VIPER_LOGO_COLOR;
+    private static final String STATUS_BAR_VIPER_LOGO_STYLE =
+            "system:" + Settings.System.STATUS_BAR_VIPER_LOGO_STYLE;
 
     static {
         boolean onlyCoreApps;
@@ -402,6 +408,13 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
     private int mShowCarrierLabel;
     private TextView mCustomCarrierLabel;
 
+	// Viper logo
+    private boolean mViperLogo;
+    private int mViperLogoColor;
+    private ImageView mViperLogoRight;
+    private ImageView mViperLogoLeft;
+    private int mViperLogoStyle;
+	
     // settings
     private QSPanel mQSPanel;
 
@@ -870,7 +883,10 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
                 LOCKSCREEN_MAX_NOTIF_CONFIG,
                 QS_ROWS_PORTRAIT,
                 QS_ROWS_LANDSCAPE,
-                QS_COLUMNS);
+                QS_COLUMNS,
+				STATUS_BAR_VIPER_LOGO,
+                STATUS_BAR_VIPER_LOGO_COLOR,
+                STATUS_BAR_VIPER_LOGO_STYLE);
 
         // Lastly, call to the icon policy to install/update all the icons.
         mIconPolicy = new PhoneStatusBarPolicy(mContext, mIconController, mCastController,
@@ -3899,6 +3915,32 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
         }, cancelAction, afterKeyguardGone);
     }
 
+	public void showViperLogo(boolean show, int color, int style) {
+        if (mStatusBarView == null) return;
+        mViperLogoLeft = (ImageView) mStatusBarView.findViewById(R.id.left_viper_logo);
+        mViperLogoRight = (ImageView) mStatusBarView.findViewById(R.id.viper_logo);
+
+        if (!show) {
+            mViperLogoRight.setVisibility(View.GONE);
+            mViperLogoLeft.setVisibility(View.GONE);
+            return;
+        }
+        if (color != 0xFFFFFFFF) {
+            mViperLogoRight.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+            mViperLogoLeft.setColorFilter(color, PorterDuff.Mode.SRC_IN);
+        } else {
+            mViperLogoRight.clearColorFilter();
+            mViperLogoLeft.clearColorFilter();
+        }
+        if (style == 0) {
+            mViperLogoRight.setVisibility(View.GONE);
+            mViperLogoLeft.setVisibility(View.VISIBLE);
+        } else {
+            mViperLogoLeft.setVisibility(View.GONE);
+            mViperLogoRight.setVisibility(View.VISIBLE);
+        }
+    }
+	
     private BroadcastReceiver mBroadcastReceiver = new BroadcastReceiver() {
         @Override
         public void onReceive(Context context, Intent intent) {
@@ -5542,6 +5584,20 @@ public class PhoneStatusBar extends BaseStatusBar implements DemoMode,
             case LOCKSCREEN_MAX_NOTIF_CONFIG:
                 mMaxKeyguardNotifConfig =
                         newValue == null ? 5 : Integer.parseInt(newValue);
+                break;
+            case STATUS_BAR_VIPER_LOGO_STYLE:
+                mViperLogoStyle =
+                        newValue == null ? 0 : Integer.parseInt(newValue);
+                showViperLogo(mViperLogo, mViperLogoColor, mViperLogoStyle);
+                break;
+            case STATUS_BAR_VIPER_LOGO:
+                mViperLogo = newValue != null && Integer.parseInt(newValue) == 1;
+                showViperLogo(mViperLogo, mViperLogoColor, mViperLogoStyle);
+                break;
+            case STATUS_BAR_VIPER_LOGO_COLOR:
+                mViperLogoColor =
+                        newValue == null ? 0xFFFFFFFF : Integer.parseInt(newValue);
+                showViperLogo(mViperLogo, mViperLogoColor, mViperLogoStyle);
                 break;
             case QS_ROWS_PORTRAIT:
             case QS_ROWS_LANDSCAPE:

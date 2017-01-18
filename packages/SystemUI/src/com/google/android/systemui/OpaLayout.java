@@ -578,13 +578,13 @@ public class OpaLayout extends FrameLayout implements ButtonDispatcher.ButtonInt
     public void setOpaEnabled(boolean enabled) {
         final boolean opaToggle = Settings.System.getIntForUser(this.getContext().getContentResolver(),
             Settings.System.PIXEL_NAV_ANIMATION, 1, UserHandle.USER_CURRENT) == 1;
-        final boolean b2 = enabled || UserManager.isDeviceInDemoMode(this.getContext()) && opaToggle;
-        this.mOpaEnabled = true;
+        final boolean b1 = getContext().getResources().getBoolean(R.bool.config_allowOpaLayout);
+        final boolean b2 = (enabled || UserManager.isDeviceInDemoMode(getContext())) && b1 && opaToggle;
+        mOpaEnabled = b2;
         int visibility;
         if (b2) {
             visibility = View.VISIBLE;
-        }
-        else {
+        } else {
             visibility = View.INVISIBLE;
         }
         this.mBlue.setVisibility(visibility);

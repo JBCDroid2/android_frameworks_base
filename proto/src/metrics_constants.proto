@@ -2213,6 +2213,9 @@ message MetricsEvent {
 
     // ViperOS additions
     VENOM = 497;
+	
+    // ViperOS additions
+    QUICK_SETTINGS = 498;
 
     // ---- End N-MR1 Constants, all N-MR1 constants go above this line ----
 

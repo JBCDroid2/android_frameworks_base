@@ -63,6 +63,15 @@ interface IStatusBarService
     void onNotificationExpansionChanged(in String key, in boolean userAction, in boolean expanded);
     void setSystemUiVisibility(int vis, int mask, String cause);
 
+    // Start DU methods
+    void toggleRecentApps();
+    void toggleSplitScreen();
+    void preloadRecentApps();
+    void cancelPreloadRecentApps();
+    void toggleLastApp();
+    void toggleKillApp();
+    void toggleScreenshot();
+    void toggleOrientationListener(boolean enable);
     void addTile(in ComponentName tile);
     void remTile(in ComponentName tile);
     void clickTile(in ComponentName tile);

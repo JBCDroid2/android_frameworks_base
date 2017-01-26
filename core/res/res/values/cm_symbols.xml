@@ -78,4 +78,7 @@
 
     <!-- Doze mode -->
     <java-symbol type="bool" name="config_doze_enabled_by_default" />
+
+    <!-- Message to show the user when their vendor image doesn't match the build's fingerprint. -->
+    <java-symbol type="string" name="lineage_system_error_manufacturer" />
 </resources>

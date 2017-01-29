@@ -40,6 +40,8 @@ import java.util.Calendar;
 import java.util.Map;
 import java.util.HashMap;
 
+import com.android.systemui.statusbar.phone.QuickStatusBarHeader;
+
 public class StatusBarHeaderMachine {
 
     private static final String TAG = "StatusBarHeaderMachine";
@@ -171,6 +173,24 @@ public class StatusBarHeaderMachine {
     }
 
     public void addObserver(IStatusBarHeaderMachineObserver observer) {
+        if (DEBUG) Log.i(TAG, "addObserver " + observer);
+
+        // there can only be one of that kind at a time
+        // so remove the old one first
+        if (observer instanceof QuickStatusBarHeader) {
+            IStatusBarHeaderMachineObserver prevObserver = null;
+            Iterator<IStatusBarHeaderMachineObserver> nextObserver = mObservers.iterator();
+            while (nextObserver.hasNext()) {
+                IStatusBarHeaderMachineObserver o = nextObserver.next();
+                if (o instanceof QuickStatusBarHeader) {
+                    prevObserver = o;
+                }
+            }
+            if (prevObserver != null) {
+                if (DEBUG) Log.i(TAG, "addObserver remove obsolete old " + prevObserver);
+                mObservers.remove(prevObserver);
+            }
+        }
         if (!mObservers.contains(observer)) {
             mObservers.add(observer);
         }
@@ -248,7 +268,7 @@ public class StatusBarHeaderMachine {
                 mAttached = true;
             } else {
                 // we dont want to wait for the alarm if provider has changed its header image
-                doUpdateStatusHeaderObservers(true)
+                doUpdateStatusHeaderObservers(true);
             }
         } else {
             if (DEBUG) Log.i(TAG, "disable provider " + provider.getName());

@@ -85,5 +85,8 @@
     <string name="accessibility_quick_settings_live_display_changed_day">LiveDisplay alterado para modo dia</string>
     <string name="accessibility_quick_settings_live_display_changed_night">LiveDisplay alterado para modo noite</string>
     <string name="accessibility_quick_settings_live_display_changed_outdoor">LiveDisplay alterado para modo ar livre</string>
+    <!-- Venom Tile -->
+    <string name="quick_venom_label">Venom</string>
+    <string name="quick_venom_toast">LOL, você realmente pensou que o clique longo irá levá-lo em algum lugar!!!</string>
 	
 </resources>

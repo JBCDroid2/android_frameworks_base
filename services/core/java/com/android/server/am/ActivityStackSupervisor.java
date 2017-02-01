@@ -3959,9 +3959,8 @@ public final class ActivityStackSupervisor implements DisplayListener {
                                         & (~StatusBarManager.DISABLE_HOME)
                                         & (~StatusBarManager.DISABLE_RECENT);
                             }
-                            getStatusBarService().disableForUser(flags, mToken,
-                                    mService.mContext.getPackageName(), msg.arg1 /* task.userId */);
-                            getStatusBarService().screenPinningStateChanged(true);
+                            getStatusBarService().disable(flags, mToken,
+                                    mService.mContext.getPackageName());
                         }
                         mWindowManager.disableKeyguard(mToken, LOCK_TASK_TAG);
                         if (getDevicePolicyManager() != null) {

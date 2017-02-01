@@ -3975,9 +3975,8 @@ public final class ActivityStackSupervisor implements DisplayListener {
                     // When lock task ends, we enable the status bars.
                     try {
                         if (getStatusBarService() != null) {
-                            getStatusBarService().disableForUser(StatusBarManager.DISABLE_NONE, mToken,
-                                    mService.mContext.getPackageName(), msg.arg1 /* task.userId */);
-                            getStatusBarService().screenPinningStateChanged(false);
+                            getStatusBarService().disable(StatusBarManager.DISABLE_NONE, mToken,
+                                    mService.mContext.getPackageName());
                         }
                         mWindowManager.reenableKeyguard(mToken);
                         if (getDevicePolicyManager() != null) {

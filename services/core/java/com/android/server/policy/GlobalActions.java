@@ -277,7 +277,6 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
         prepareDialog();
         WindowManager.LayoutParams attrs = mDialog.getWindow().getAttributes();
         attrs.setTitle("GlobalActions");
-        attrs.alpha = setPowerMenuAlpha();
 
         boolean isPrimary = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
         int powermenuAnimation = isPrimary ? getPowermenuAnimation() : 0;

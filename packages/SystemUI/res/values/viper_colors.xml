@@ -57,7 +57,6 @@
 
     <!-- Nav bar tuner colors -->
     <color name="navbar_tuner_background_color">@android:color/white</color>
-<<<<<<< HEAD:packages/SystemUI/res/values/viper_colors.xml
     <color name="navbar_tuner_text_color">@*android:color/material_deep_teal_500</color>
 
     <!-- Floating action button -->

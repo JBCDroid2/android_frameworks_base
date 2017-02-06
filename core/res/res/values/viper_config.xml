@@ -41,8 +41,6 @@
     <!-- Default value for led color when battery is really fully charged -->
     <integer name="config_notificationsBatteryReallyFullARGB">0xFF00FF00</integer>
 
-    <bool name="single_hand_mode">true</bool>
-
     <!-- These are the various interesting memory levels that we will give to
          the OOM killer.  Note that the OOM killer only supports 6 slots, so we
          can't give it a different value for every possible kind of process.
@@ -119,4 +117,5 @@
         <item>221184</item>
         <item>322560</item>
     </integer-array>
+	
 </resources>

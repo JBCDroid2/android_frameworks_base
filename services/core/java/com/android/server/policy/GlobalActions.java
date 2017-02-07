@@ -103,7 +103,7 @@ import java.util.BitSet;
 import java.util.List;
 
 import static com.android.internal.util.cm.PowerMenuConstants.*;
-import com.android.internal.util.crdroid.OnTheGoActions;
+import com.android.internal.util.viper.OnTheGoActions;
 
 /**
  * Helper to show the global actions dialog.  Each item is an {@link Action} that
@@ -278,7 +278,6 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
         prepareDialog();
         WindowManager.LayoutParams attrs = mDialog.getWindow().getAttributes();
         attrs.setTitle("GlobalActions");
-        attrs.alpha = setPowerMenuAlpha();
 
         boolean isPrimary = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
         int powermenuAnimation = isPrimary ? getPowermenuAnimation() : 0;
@@ -861,7 +860,7 @@ class GlobalActions implements DialogInterface.OnDismissListener, DialogInterfac
 
     private void startOnTheGo() {
         final ComponentName cn = new ComponentName("com.android.systemui",
-                "com.android.systemui.crdroid.onthego.OnTheGoService");
+                "com.android.systemui.viper.onthego.OnTheGoService");
         final Intent startIntent = new Intent();
         startIntent.setComponent(cn);
         startIntent.setAction("start");

@@ -50,7 +50,7 @@ import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import com.android.systemui.R;
-import com.android.internal.util.aicp.PackageUtils;
+import com.android.internal.util.viper.PackageUtils;
 
 public class DaylightHeaderProvider implements
         StatusBarHeaderMachine.IStatusBarHeaderProvider {

@@ -37,9 +37,6 @@
 	
     <!-- Whether doze feature is enabled by default in settings. -->
     <bool name="config_doze_enabled_by_default">false</bool>
-    
-    <!-- Default value for led color when battery is really fully charged -->
-    <integer name="config_notificationsBatteryReallyFullARGB">0xFF00FF00</integer>
 
     <!-- These are the various interesting memory levels that we will give to
          the OOM killer.  Note that the OOM killer only supports 6 slots, so we

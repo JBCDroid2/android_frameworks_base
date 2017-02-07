@@ -407,7 +407,7 @@ public class NotificationPanelView extends PanelView implements
                 STATUS_BAR_QUICK_QS_PULLDOWN,
                 DOUBLE_TAP_SLEEP_GESTURE,
                 LOCK_SCREEN_WEATHER_ENABLED,
-                DOUBLE_TAP_SLEEP_ANYWHERE);
+                DOUBLE_TAP_SLEEP_ANYWHERE,
                 LOCK_ENABLE_QS);
     }
 

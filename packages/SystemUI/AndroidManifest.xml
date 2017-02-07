@@ -238,7 +238,7 @@
             </intent-filter>
        </receiver>
 
-        <service android:name=".crdroid.onthego.OnTheGoService"
+        <service android:name=".viper.onthego.OnTheGoService"
             android:process=":onthego"
             android:exported="false" />
 

@@ -41,7 +41,7 @@ public class OnTheGoActions {
 
     private static void actionOnTheGoToggle(final Context context) {
         final ComponentName cn = new ComponentName("com.android.systemui",
-                "com.android.systemui.crdroid.onthego.OnTheGoService");
+                "com.android.systemui.viper.onthego.OnTheGoService");
         final Intent startIntent = new Intent();
         startIntent.setComponent(cn);
         startIntent.setAction("start");

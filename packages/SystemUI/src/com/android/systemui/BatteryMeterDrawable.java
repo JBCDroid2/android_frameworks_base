@@ -719,6 +719,7 @@ public class BatteryMeterDrawable extends Drawable implements
             }
         } else {
             d.setAlpha(mPluggedIn ? 255 : 0);
+            }
         }
 
         // Now draw the level indicator

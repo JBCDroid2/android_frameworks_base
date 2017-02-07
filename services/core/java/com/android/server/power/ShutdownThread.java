@@ -260,6 +260,8 @@ public final class ShutdownThread extends Thread {
             closer.dialog = sConfirmDialog;
             sConfirmDialog.setOnDismissListener(closer);
 
+            WindowManager.LayoutParams attrs = sConfirmDialog.getWindow().getAttributes();
+			
             boolean isPrimary = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
             int powermenuAnimation = isPrimary ? getPowermenuAnimation(context) : 0;
 
@@ -457,6 +459,8 @@ public final class ShutdownThread extends Thread {
         pd.setCancelable(false);
         pd.getWindow().setType(WindowManager.LayoutParams.TYPE_KEYGUARD_DIALOG);
 
+        WindowManager.LayoutParams attrs = pd.getWindow().getAttributes();
+		
         boolean isPrimary = UserHandle.getCallingUserId() == UserHandle.USER_OWNER;
         int powermenuAnimation = isPrimary ? getPowermenuAnimation(context) : 0;
 

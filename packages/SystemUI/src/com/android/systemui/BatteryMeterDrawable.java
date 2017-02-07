@@ -73,10 +73,11 @@ public class BatteryMeterDrawable extends Drawable implements
     public static final int BATTERY_STYLE_PORTRAIT  = 0;
     public static final int BATTERY_STYLE_SOLID     = 2;
     public static final int BATTERY_STYLE_GAUGE     = 4;
-    public static final int BATTERY_STYLE_CIRCLE    = 5;
-    public static final int BATTERY_STYLE_HIDDEN    = 6;
-    public static final int BATTERY_STYLE_LANDSCAPE = 7;
-    public static final int BATTERY_STYLE_TEXT      = 8;
+    public static final int BATTERY_STYLE_BIGCIRCLE = 5;
+    public static final int BATTERY_STYLE_CIRCLE    = 6;
+    public static final int BATTERY_STYLE_HIDDEN    = 7;
+    public static final int BATTERY_STYLE_LANDSCAPE = 8;
+    public static final int BATTERY_STYLE_TEXT      = 9;
 
     private final int[] mColors;
     private final int mIntrinsicWidth;
@@ -280,7 +281,7 @@ public class BatteryMeterDrawable extends Drawable implements
         mLevel = level;
         mPluggedIn = pluggedIn;
 
-        if (mStyle == BATTERY_STYLE_CIRCLE) {
+        if (mStyle == BATTERY_STYLE_CIRCLE || mStyle == BATTERY_STYLE_BIGCIRCLE) {
             animateCircleBattery(level, pluggedIn, charging);
         }
 
@@ -349,7 +350,7 @@ public class BatteryMeterDrawable extends Drawable implements
                     return getBoltColor();
                 }
             } else {
-                if (mStyle == BATTERY_STYLE_CIRCLE && !mPluggedIn) {
+                if ((mStyle == BATTERY_STYLE_CIRCLE || mStyle == BATTERY_STYLE_BIGCIRCLE) && !mPluggedIn) {
                     return mColors[1];
                 } else if (!isChargeLevel) {
                     return getBoltColor();
@@ -558,6 +559,8 @@ public class BatteryMeterDrawable extends Drawable implements
         switch (style) {
             case BATTERY_STYLE_LANDSCAPE:
                 return R.drawable.ic_battery_landscape;
+            case BATTERY_STYLE_BIGCIRCLE:
+                return R.drawable.ic_battery_bigcircle;
             case BATTERY_STYLE_CIRCLE:
                 return R.drawable.ic_battery_circle;
 	    case BATTERY_STYLE_SOLID:
@@ -575,6 +578,7 @@ public class BatteryMeterDrawable extends Drawable implements
         switch (style) {
             case BATTERY_STYLE_LANDSCAPE:
                 return R.style.BatteryMeterViewDrawable_Landscape;
+            case BATTERY_STYLE_BIGCIRCLE:
             case BATTERY_STYLE_CIRCLE:
                 return R.style.BatteryMeterViewDrawable_Circle;
 	    case BATTERY_STYLE_SOLID:
@@ -590,7 +594,9 @@ public class BatteryMeterDrawable extends Drawable implements
 
     private int getBoltColor() {
         if (mBoltOverlay) {
-            return mContext.getResources().getColor(mStyle == BATTERY_STYLE_CIRCLE ? R.color.batterymeter_bolt_color : R.color.system_primary_color);
+            return mContext.getResources().getColor((mStyle == BATTERY_STYLE_CIRCLE || mStyle == BATTERY_STYLE_BIGCIRCLE)
+                                                        ? R.color.batterymeter_bolt_color
+                                                        : R.color.system_primary_color);
         }
         return mContext.getResources().getColor(R.color.batterymeter_bolt_color);
     }
@@ -606,6 +612,9 @@ public class BatteryMeterDrawable extends Drawable implements
         // text size is width / 2 - 2dp for wiggle room
         final float textSize;
         switch(mStyle) {
+            case BATTERY_STYLE_BIGCIRCLE:
+                textSize = widthDiv2 * 1.3f;
+                break;
             case BATTERY_STYLE_CIRCLE:
                 textSize = widthDiv2 - mContext.getResources().getDisplayMetrics().density / 1.3f;
                 break;

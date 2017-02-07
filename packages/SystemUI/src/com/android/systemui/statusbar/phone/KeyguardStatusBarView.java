@@ -398,7 +398,7 @@ public class KeyguardStatusBarView extends RelativeLayout
     public void onTuningChanged(String key, String newValue) {
         switch (key) {
             case STATUS_BAR_SHOW_BATTERY_PERCENT:
-                mShowBatteryText = newValue != null && Integer.parseInt(newValue) == 2;
+                mShowBatteryText = newValue != null && Integer.parseInt(newValue) == 6;
                 updateVisibilities();
                 break;
             case STATUS_BAR_BATTERY_STYLE:
